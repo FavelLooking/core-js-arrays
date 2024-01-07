@@ -21,12 +21,10 @@
  *    getIntervalArray(3, 3) => [ 3 ]
  */
 function getIntervalArray(start, end) {
-  //console.debug(start, end)
-  let arr = Array.from({ length: end-start+1},(_, i) => start + i);
+  const arr = Array.from({ length: end - start + 1 }, (_, i) => start + i);
   // console.debug(arr);
   // console.debug(`------------------------`);
   return arr;
-
 }
 
 /**
@@ -43,23 +41,21 @@ function getIntervalArray(start, end) {
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
 function sumArrays(arr1, arr2) {
-  let lengthOne = arr1.length;
-  let lengthTwo = arr2.length;
+  const lengthOne = arr1.length;
+  const lengthTwo = arr2.length;
   if (lengthOne > lengthTwo) {
     arr2.push(...Array(lengthOne - lengthTwo).fill(0));
   } else if (lengthOne < lengthTwo) {
     arr1.push(...Array(lengthTwo - lengthOne).fill(0));
   }
 
-  let result = arr1.map((value, index) => {
+  const result = arr1.map((value, index) => {
     if (arr2[index] !== undefined) {
       return value + arr2[index];
-    } else {
-      return value;
     }
+    return value;
   });
   return result;
-
 }
 
 /**
@@ -76,7 +72,6 @@ function sumArrays(arr1, arr2) {
  */
 function findElement(arr, value) {
   return arr.indexOf(value);
-
 }
 
 /**
@@ -94,7 +89,7 @@ function findElement(arr, value) {
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
 function findAllOccurrences(arr, item) {
-  let result = arr.filter(a=> a === item)
+  const result = arr.filter((a) => a === item);
   return result.length;
 }
 
@@ -111,7 +106,7 @@ function findAllOccurrences(arr, item) {
  *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
  */
 function removeFalsyValues(arr) {
-  return arr.filter(a => (Boolean(a)));
+  return arr.filter((a) => Boolean(a));
 }
 
 /**
@@ -125,7 +120,7 @@ function removeFalsyValues(arr) {
  *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-  return arr.map(a => a.length);
+  return arr.map((a) => a.length);
 }
 
 /**
@@ -143,11 +138,12 @@ function getStringsLength(arr) {
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
 function getAverage(arr) {
-  if(arr.length === 0) {
+  if (arr.length === 0) {
     return 0;
   }
-  let resultNotRound = (arr.reduce((prev,current) => prev+current))/arr.length;
-  let result = parseFloat(resultNotRound.toFixed(2));
+  const resultNotRound =
+    arr.reduce((prev, current) => prev + current) / arr.length;
+  const result = parseFloat(resultNotRound.toFixed(2));
   return result;
 }
 
@@ -162,12 +158,10 @@ function getAverage(arr) {
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
 function isSameLength(arr) {
-  console.debug(arr);
-  let stringArr = arr.map(a => a.length);
-  console.debug(stringArr);
+  const stringArr = arr.map((a) => a.length);
   const findSimilar = (currentValue) => {
-    return currentValue === stringArr[0]
-  }
+    return currentValue === stringArr[0];
+  };
   return stringArr.every(findSimilar);
 }
 
@@ -183,9 +177,9 @@ function isSameLength(arr) {
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
 function isValueEqualsIndex(arr) {
-  const findeSomeEquals = (currentValue,index) => {
+  const findeSomeEquals = (currentValue, index) => {
     return currentValue === index;
-  }
+  };
   return arr.some(findeSomeEquals);
 }
 
