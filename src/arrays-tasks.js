@@ -504,8 +504,9 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  arr.sort((a, b) => b - a);
+  return arr.slice(0, n);
 }
 
 /**
@@ -520,8 +521,8 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  return arr1.filter((el) => arr2.indexOf(el) !== -1);
 }
 
 /**
@@ -621,8 +622,21 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length === 0 || arr.length === 1) {
+    return arr;
+  }
+  if (arr.length % 2 === 0) {
+    return arr.slice(arr.length / 2).concat(arr.slice(0, arr.length / 2));
+  }
+  console.debug(
+    arr
+      .slice(Math.ceil(arr.length / 2))
+      .concat(arr[Math.floor(arr.length / 2)], arr.slice(0, arr.length / 2))
+  );
+  return arr
+    .slice(Math.ceil(arr.length / 2))
+    .concat(arr[Math.floor(arr.length / 2)], arr.slice(0, arr.length / 2));
 }
 
 module.exports = {
